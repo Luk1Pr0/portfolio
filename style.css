@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: black;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 3rem;
+    color: white;
+}
+
+h2 {
+    font-size: 2rem;
+    position: relative;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: rgb(74, 74, 182);
+}
+
+h2::after {
+    content: "";
+    border-bottom: 3px solid  rgb(74, 74, 182);
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    width: 15%;
+    transform: translate(-50%, -50%);
+}
+
+.important-text {
+    color: yellow;
+}
+
+nav, ul {
+    background: linear-gradient(90deg, rgb(120, 74, 182), rgb(74, 74, 182));
+    list-style-type: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    padding: 0.9rem 2rem;
+    color: white;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li:last-child {
+    margin-right: 8rem;
+}
+
+nav ul li a:hover {
+    border-bottom: 2px solid yellow;
+}
+
+header {
+    width: 100%;
+    height: 100vh;
+    background: url(https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80), white;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-cover {
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.5;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    z-index: 1;
+}
+
+.header-container {
+    width: 75%;
+    height: auto;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+}
+
+.button-container {
+    margin-top: 1rem;
+}
+
+button {
+    cursor: pointer;
+    border: 3px solid white;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.8rem 1.5rem;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: rgb(74, 74, 182);
+}
+
+.fas {
+    transition: 0.5s ease;
+}
+
+button:hover > .fas {
+    transform: rotate(90deg);
+}
+
+section {
+    width: 100%;
+    background: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blue-background {
+    background: linear-gradient(0deg, rgb(194, 164, 235), rgb(184, 143, 238));
+}
+
+.content-container {
+    width: 75%;
+    padding: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.about-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.about-text {
+    width: 50%;
+}
+
+.tech-icons-container {
+    width: 50%;
+    height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.icon {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
+}
+
+.html-icon {
+    /* Flaming red */
+    color: #E44D26;
+}
+
+.css-icon {
+    /* Blue */
+    color: #0077F9;
+}
+
+.js-icon {
+    /* Yellow */
+    color: #E9D300;
+}
+
+.react-icon {
+    /* Light blue red */
+    color: #00DDE5;
+}
+
+footer {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(90deg, rgb(194, 164, 235), rgb(184, 143, 238));
+    padding: 1.2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    width: 100%;
+    height: 100%;
+}
