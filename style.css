@@ -14,8 +14,8 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     font-weight: 300;
-    color: black;
     overflow-x: hidden;
+    color: rgb(74, 74, 130);
 }
 
 h1 {
@@ -28,12 +28,12 @@ h2 {
     position: relative;
     margin-bottom: 1rem;
     text-transform: uppercase;
-    color: rgb(74, 74, 182);
+    color: rgb(74, 74, 130);
 }
 
 h2::after {
     content: "";
-    border-bottom: 3px solid  rgb(74, 74, 182);
+    border-bottom: 3px solid  rgb(74, 74, 130);
     position: absolute;
     bottom: -30%;
     left: 50%;
@@ -47,13 +47,13 @@ h2::after {
 }
 
 hr {
-    border: 1px solid rgb(74, 74, 182);
+    border: 1px solid rgb(74, 74, 130);
     margin: 2rem 0;
 }
 
 /* Navigation styling */
 nav, ul {
-    background: linear-gradient(90deg, rgb(128, 128, 236), rgb(120, 74, 182));
+    background: linear-gradient(90deg, rgb(128, 128, 236), rgb(120, 74, 190));
     list-style-type: none;
     position: fixed;
     top: 0;
@@ -143,7 +143,7 @@ button {
 
 /* Button background color fill on hover */
 #scroll-button:hover {
-    background: rgb(74, 74, 182);
+    background: rgb(74, 74, 130);
 }
 
 /* Button arrow styling */
@@ -303,7 +303,7 @@ input {
 }
 
 input::placeholder {
-    color: rgb(74, 74, 182);
+    color: rgb(74, 74, 130);
 }
 
 /* Input message box */
@@ -311,17 +311,17 @@ input::placeholder {
     width: 50%;
 }
 
-/* Button submit form */
+/* Button submit contact form styling */
 .send-button {
     padding: 0.6rem 1.3rem;
-    border: 2px solid rgb(74, 74, 182);
+    border: 2px solid rgb(74, 74, 130);
     border-radius: 1rem;
-    color: rgb(74, 74, 182);
+    color: rgb(74, 74, 130);
 }
 
 .send-button:hover {
     color: white;
-    background: rgb(74, 74, 182);
+    background: rgb(74, 74, 130);
 }
 
 /* Footer styling */
@@ -384,7 +384,6 @@ footer {
         margin: 3rem 0;
     }
 
-    /* Wrapping the about me text and about me section icons  */
     .about-wrapper {
         flex-direction: column;
     }
@@ -411,7 +410,6 @@ footer {
         width: 100%;
     }
 
-    /* Contact form input styling */
     input {
         width: 49%;
     }
