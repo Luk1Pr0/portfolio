@@ -4,6 +4,7 @@ const navButton = document.querySelector("#nav-button");
 const aboutSection = document.querySelector("#about");
 const navMenu = document.querySelector("#nav-menu");
 const navLinks = document.querySelectorAll("nav ul li");
+const contactFormContainer = document.querySelector("#form-container");
 const contactForm = document.querySelector("#contact-form");
 const submitFormBtn = document.querySelector("#send-button");
 
@@ -15,6 +16,7 @@ const scrollToAbout = () => {
 
 const toggleNav = () => {
     navMenu.classList.toggle("nav-active");
+    // Toggle burger menu
     navButton.classList.toggle("active-bar");
 }
 
@@ -38,20 +40,19 @@ navButton.addEventListener("click", toggleNav);
 iterateLinks();
 
 
-window.addEventListener("DOMContentLoaded", function() {
 
-    // get the form elements defined in your form HTML above
-    var status = document.getElementById("my-form-status");
+// Contact form submission script
+window.addEventListener("DOMContentLoaded", function() {
 
     // Success and Error functions for after the form is submitted
     function success() {
         contactForm.reset();
-        submitFormBtn.style = "display: none ";
-        // status.innerHTML = "Thanks!";
+        alert("Thank you for submitting the form :)");
     }
 
     function error() {
         console.log("Error");
+        alert("Sorry, something went wrong")
     }
 
     // handle the form submission event
