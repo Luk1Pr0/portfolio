@@ -138,11 +138,11 @@
                 <br>
                 <!-- Form container start -->
                 <div class="form-container">
-                    <form>
-                        <input class="name-box" type="text" placeholder="Name" required>
-                        <input class="email-box" type="email" placeholder="Email" required>
+                    <form id="contact-form" action="https://formspree.io/f/xyybwalv" method="POST">
+                        <input class="name-box" type="text" name="name" placeholder="Name" required>
+                        <input class="email-box" type="email" name="email" placeholder="Email" required>
                         <br>
-                        <input class="message-box" type="text" placeholder="Enter your message" required>
+                        <input class="message-box" type="text" name="message" placeholder="Enter your message" required>
                         <br>
                         <button class="send-button" id="send-button">Send</button>
                     </form>       
