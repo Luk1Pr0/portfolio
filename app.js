@@ -36,7 +36,7 @@ const iterateLinks = () => {
 scrollButton.addEventListener("click", scrollToAbout);
 navButton.addEventListener("click", toggleNav);
 
-// Envoke function
+// Invoke function
 iterateLinks();
 
 
