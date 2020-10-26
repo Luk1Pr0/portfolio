@@ -25,16 +25,28 @@ const closeNav = () => {
     navButton.classList.remove("active-bar");
 }
 
+const displayNav = () => {
+  let showNavPos = aboutSection.getBoundingClientRect().y;
+  console.log(showNavPos);
+  let windowHeight = window.innerHeight;
+    if (showNavPos <= 0) {
+        navMenu.classList.add("nav-show");
+    } else {
+        navMenu.classList.remove("nav-show");
+    }
+}
+
 // For each link, loop through and add the closeNav functionality
 const iterateLinks = () => {
-    navLinks.forEach(link => {
-        link.addEventListener("click", closeNav);
-    })
+  navLinks.forEach(link => {
+      link.addEventListener("click", closeNav);
+  })
 }
 
 // Event listeners
 scrollButton.addEventListener("click", scrollToAbout);
 navButton.addEventListener("click", toggleNav);
+window.addEventListener("scroll", displayNav);
 
 // Invoke function
 iterateLinks();

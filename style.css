@@ -55,16 +55,21 @@ hr {
 nav {
     background: linear-gradient(90deg, rgb(128, 128, 236), rgb(120, 74, 190));
     position: fixed;
-    top: 0;
+    top: -12vh;
     width: 100%;
     z-index: 10;
     display: flex;
     justify-content: flex-end;
+    transition: all 0.3s ease;
 }
 
 ul {
     display: flex;
     list-style: none;
+}
+
+.nav-show {
+    top: 0;
 }
 
 nav ul li {
