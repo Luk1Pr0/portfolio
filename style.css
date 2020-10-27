@@ -227,13 +227,44 @@ section {
     justify-content: space-around;
 }
 
+/* Container for about text and contact icons */
+.about-content-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .about-text {
-    width: 50%;
+    width: 100%;
+}
+
+/* Contact icons container */
+.contact-icons-wrapper {
+    width: 100%;
+    height: auto;
+    font-size: 4rem;
+    margin: 1rem;
+}
+
+/* Styling for LinkedIn icon */
+.fa-linkedin {
+    color: rgb(40,103,178);
+}
+
+/* Styling for GitHub icon */
+.fa-github-square {
+    color: rgb(0, 0, 0, 0.7);
+}
+
+.mobile-hr {
+    display: none;
 }
 
 /* About icons container */
 .tech-icons-container {
-    width: 50%;
+    width: 40%;
     height: 50vh;
     display: flex;
     flex-wrap: wrap;
@@ -541,12 +572,30 @@ footer {
         margin: 3rem 0;
     }
 
+    .about-content-container {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-icons-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
     .about-wrapper {
         flex-direction: column;
     }
 
     .about-text {
         width: 100%;
+    }
+
+    .mobile-hr {
+        display: block;
     }
 
     .tech-icons-container {
