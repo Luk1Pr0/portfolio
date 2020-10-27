@@ -14,7 +14,7 @@ const projectImage = document.querySelectorAll(".project-image-container");
 // Slide in project text on scroll
 const displayProjectText = () => {
     projectText.forEach((text) => {
-      // Position of project text from top
+        // Position of project text from top
         let rectTop = text.getBoundingClientRect().top;
         // Position of scroll divided
         let viewHeight = window.innerHeight / 1.5;
@@ -26,6 +26,21 @@ const displayProjectText = () => {
     })
   }
 
+// Slide in project image on scroll
+const displayProjectImage = () => {
+  projectImage.forEach(image => {
+      // Position of project text from top
+      let imgTop = image.getBoundingClientRect().top;
+      // Position of scroll divided
+      let viewHeight = window.innerHeight / 1.5;
+      if (imgTop <= viewHeight) {
+        image.classList.add("display-project-image");
+      } else {
+        image.classList.remove("display-project-image");
+      }
+  })
+}
+
 // Run the display project function when project section in view
 const inView = () => {
   let windowHeight = window.innerHeight;
@@ -33,16 +48,9 @@ const inView = () => {
   let bottom = projectSection.getBoundingClientRect().bottom - windowHeight;
   if (height < 0 && bottom > 0) {
     displayProjectText();
+    displayProjectImage();
   }
 }
-
-const displayProjectImage = () => {
-    projectImage.forEach(image => {
-        // console.log(image);
-    })
-}
-
-displayProjectImage();
 
 // Scroll to about section
 const scrollToAbout = () => {
