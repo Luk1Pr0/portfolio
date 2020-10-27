@@ -14,12 +14,14 @@ const projectText = document.querySelectorAll(".project-text-container");
 // Slide in project text on scroll
 const displayProject = () => {
     projectText.forEach((text, i) => {
-        let rectTop = projectSection.getBoundingClientRect().top;
-        let windowHeight = window.innerHeight / 2;
-        if (rectTop <= windowHeight) {
+        let rectTop = text.getBoundingClientRect().top;
+        let viewHeight = Math.floor(window.scrollY / 3);
+        if (rectTop <= viewHeight) {
+          console.log("TRUE");
           text.classList.add("display-project-text");
         } else {
           text.classList.remove("display-project-text");
+          console.log("FALSE");
         }
   })
 }
