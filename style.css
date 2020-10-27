@@ -60,7 +60,9 @@ nav {
     z-index: 10;
     display: flex;
     justify-content: flex-end;
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
+    border: none;
+    outline: none;
 }
 
 ul {
@@ -294,8 +296,15 @@ section {
 .project-text-container {
     width: 47%;
     height: auto;
-    transition: 0.3s ease;
-    opacity: 0.5;
+    transition: 0.5s ease;
+    transform: translateX(20%);
+    opacity: 0;
+}
+
+/* Project opacity set to 1 and applied with JS */
+.display-project-text {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 /* Change text color on project hover */
@@ -399,6 +408,7 @@ footer {
 @media screen and (max-width: 1000px) {
     body {
         font-size: 1rem;
+        overflow-x: hidden;
     }
     
     h1 {

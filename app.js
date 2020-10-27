@@ -2,11 +2,27 @@
 const scrollButton = document.querySelector("#scroll-button");
 const navButton = document.querySelector("#nav-button");
 const aboutSection = document.querySelector("#about");
+const projectSection = document.querySelector("#projects");
 const navMenu = document.querySelector("#nav-menu");
 const navLinks = document.querySelectorAll("nav ul li");
 const contactFormContainer = document.querySelector("#form-container");
 const contactForm = document.querySelector("#contact-form");
 const submitFormBtn = document.querySelector("#send-button");
+const projectText = document.querySelectorAll(".project-text-container");
+
+
+// Slide in project text on scroll
+const displayProject = () => {
+    projectText.forEach((text, i) => {
+        let rectTop = projectSection.getBoundingClientRect().top;
+        let windowHeight = window.innerHeight / 2;
+        if (rectTop <= windowHeight) {
+          text.classList.add("display-project-text");
+        } else {
+          text.classList.remove("display-project-text");
+        }
+  })
+}
 
 // Scroll to about section
 const scrollToAbout = () => {
@@ -26,15 +42,15 @@ const closeNav = () => {
 }
 
 const displayNav = () => {
+  // Get position of about section and put it in a variable
   let showNavPos = aboutSection.getBoundingClientRect().y;
-  console.log(showNavPos);
-  let windowHeight = window.innerHeight;
-    if (showNavPos <= 0) {
+    if (showNavPos <= 80) {
         navMenu.classList.add("nav-show");
     } else {
         navMenu.classList.remove("nav-show");
     }
 }
+
 
 // For each link, loop through and add the closeNav functionality
 const iterateLinks = () => {
@@ -47,6 +63,7 @@ const iterateLinks = () => {
 scrollButton.addEventListener("click", scrollToAbout);
 navButton.addEventListener("click", toggleNav);
 window.addEventListener("scroll", displayNav);
+window.addEventListener("scroll", displayProject);
 
 // Invoke function
 iterateLinks();
