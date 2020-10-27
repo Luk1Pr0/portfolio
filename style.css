@@ -46,6 +46,11 @@ h2::after {
     color: yellow;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(74, 74, 130);
+}
+
 hr {
     border: 1px solid rgb(74, 74, 130);
     margin: 2rem 0;
@@ -288,11 +293,13 @@ section {
     transition: 0.5s ease;
     cursor: pointer;
     opacity: 0;
+    object-fit: cover;
 }
 
 .display-project-image {
     opacity: 1;
 }
+
 
 /* Change box-shadow color opacity on project hover */
 .project:hover > .project-image-container {
@@ -313,17 +320,41 @@ section {
     opacity: 1;
 }
 
-/* Change text color on project hover */
-.project:hover > .project-text-container {
-    opacity: 1;
-}
-
-/* Fit the image in the container */
+/* Fit the project image in the container */
 .project-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 1rem;
+}
+
+/* Project button container styling */
+.project-button-container {
+    margin: 1rem;
+}
+
+/* Project button styling */
+.project-button-container button {
+    padding: 0.6rem 1.3rem;
+    border: 2px solid rgb(74, 74, 130);
+    box-shadow: 0 5px 10px 1px rgb(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    transition: 0.3s ease;
+}
+
+/* Transition to the link inside the button */
+.project-button-container button a {
+    transition: 0.3s ease;
+    color: rgb(74, 74, 130);
+}
+
+.project-button-container button:hover {
+    background: rgb(74, 74, 130);
+    color: white;
+}
+
+.project-button-container button:hover > a {
+    color: white;
 }
 
 /* Contact container style */
