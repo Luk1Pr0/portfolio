@@ -12,21 +12,37 @@ const projectText = document.querySelectorAll(".project-text-container");
 const projectImage = document.querySelectorAll(".project-image-container");
 
 // Slide in project text on scroll
-const displayProjectContent = (e) => {
-    console.log(projectSection.scrollHeight);
-    let projectContainerPos = projectSection.scrollHeight;
+const displayProjectText = () => {
     projectText.forEach((text) => {
       // Position of project text from top
-      let rectTop = text.getBoundingClientRect().top;
-      // Position of scroll divided
-      let viewHeight = window.innerHeight / 1.5;
-      if (rectTop <= viewHeight) {
-        text.classList.add("display-project-text");
-      } else {
-        text.classList.remove("display-project-text");
-      }
+        let rectTop = text.getBoundingClientRect().top;
+        // Position of scroll divided
+        let viewHeight = window.innerHeight / 1.5;
+        if (rectTop <= viewHeight) {
+          text.classList.add("display-project-text");
+        } else {
+          text.classList.remove("display-project-text");
+        }
+    })
+  }
+
+// Run the display project function when project section in view
+const inView = () => {
+  let windowHeight = window.innerHeight;
+  let height = projectSection.getBoundingClientRect().top - windowHeight;
+  let bottom = projectSection.getBoundingClientRect().bottom - windowHeight;
+  if (height < 0 && bottom > 0) {
+    displayProjectText();
+  }
+}
+
+const displayProjectImage = () => {
+    projectImage.forEach(image => {
+        // console.log(image);
     })
 }
+
+displayProjectImage();
 
 // Scroll to about section
 const scrollToAbout = () => {
@@ -66,7 +82,9 @@ const iterateLinks = () => {
 scrollButton.addEventListener("click", scrollToAbout);
 navButton.addEventListener("click", toggleNav);
 window.addEventListener("scroll", displayNav);
-window.addEventListener("scroll", displayProjectContent);
+// window.addEventListener("scroll", displayProjectText);
+window.addEventListener("scroll", inView);
+// window.addEventListener("scroll", displayProjectImage);
 
 // Invoke function
 iterateLinks();
