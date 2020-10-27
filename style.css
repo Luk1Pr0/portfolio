@@ -277,6 +277,7 @@ section {
     align-items: center;
     padding: 1rem 0;
     transition: 0.3s ease;
+    overflow-x: hidden;
 }
 
 .project-image-container {
