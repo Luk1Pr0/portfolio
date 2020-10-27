@@ -90,9 +90,7 @@ const iterateLinks = () => {
 scrollButton.addEventListener("click", scrollToAbout);
 navButton.addEventListener("click", toggleNav);
 window.addEventListener("scroll", displayNav);
-// window.addEventListener("scroll", displayProjectText);
 window.addEventListener("scroll", inView);
-// window.addEventListener("scroll", displayProjectImage);
 
 // Invoke function
 iterateLinks();
