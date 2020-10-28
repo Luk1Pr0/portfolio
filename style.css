@@ -320,7 +320,6 @@ section {
     width: 47%;
     height: 40vh;
     border-radius: 1rem;
-    box-shadow: 0 0 10px 1px rgb(0 0 0 / 20%);
     transition: 0.5s ease;
     cursor: pointer;
     opacity: 0;
@@ -329,12 +328,6 @@ section {
 
 .display-project-image {
     opacity: 1;
-}
-
-
-/* Change box-shadow color opacity on project hover */
-.project:hover > .project-image-container {
-    box-shadow: 0 0 10px 1px rgb(0 0 0 / 50%);
 }
 
 .project-text-container {

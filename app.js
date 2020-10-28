@@ -95,8 +95,6 @@ window.addEventListener("scroll", inView);
 // Invoke function
 iterateLinks();
 
-
-
 // Contact form submission script
 window.addEventListener("DOMContentLoaded", function() {
 
