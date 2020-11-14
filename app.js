@@ -10,6 +10,8 @@ const contactForm = document.querySelector("#contact-form");
 const submitFormBtn = document.querySelector("#send-button");
 const projectText = document.querySelectorAll(".project-text-container");
 const projectImage = document.querySelectorAll(".project-image-container");
+const header = document.querySelector(".button-container");
+const headerText = document.querySelector(".header-text");
 
 // Slide in project text on scroll
 const displayProjectText = () => {
@@ -86,6 +88,15 @@ const iterateLinks = () => {
   })
 }
 
+function showHeader() {
+  setTimeout(() => {
+      header.classList.add("display-opacity");
+  }, 2000);
+  setTimeout(() => {
+      headerText.classList.add("display-opacity");
+  }, 800);
+}
+
 // Event listeners
 scrollButton.addEventListener("click", scrollToAbout);
 navButton.addEventListener("click", toggleNav);
@@ -94,6 +105,7 @@ window.addEventListener("scroll", inView);
 
 // Invoke function
 iterateLinks();
+showHeader();
 
 // Contact form submission script
 window.addEventListener("DOMContentLoaded", function() {

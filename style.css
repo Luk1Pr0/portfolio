@@ -144,6 +144,12 @@ header {
     z-index: 1;
 }
 
+/* Header text */
+.header-text {
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
 /* Header content container */
 .header-container {
     width: 75%;
@@ -157,6 +163,12 @@ header {
 /* Header button container */
 .button-container {
     margin-top: 2rem;
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.display-opacity {
+    opacity: 1;
 }
 
 /* Overall button styling */
