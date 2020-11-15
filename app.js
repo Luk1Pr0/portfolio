@@ -93,7 +93,7 @@ const iterateLinks = () => {
 function showHeader() {
   setTimeout(() => {
       header.classList.add("display-opacity");
-  }, 500)
+  }, 500);
   setTimeout(() => {
       headerText.classList.add("display-opacity");
   }, 1500);
