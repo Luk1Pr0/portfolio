@@ -565,6 +565,10 @@ footer a {
         background-attachment: scroll;
     }
 
+    .header-container {
+        width: 95%;
+    }
+
     section {
         min-height: 100vh;
     }
