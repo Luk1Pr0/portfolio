@@ -10,8 +10,10 @@ const contactForm = document.querySelector("#contact-form");
 const submitFormBtn = document.querySelector("#send-button");
 const projectText = document.querySelectorAll(".project-text-container");
 const projectImage = document.querySelectorAll(".project-image-container");
-const header = document.querySelector(".button-container");
+const header = document.querySelector("header");
 const headerText = document.querySelector(".header-text");
+const headerButton = document.querySelector(".button-container");
+
 
 // Slide in project text on scroll
 const displayProjectText = () => {
@@ -91,10 +93,13 @@ const iterateLinks = () => {
 function showHeader() {
   setTimeout(() => {
       header.classList.add("display-opacity");
-  }, 2000);
+  }, 500)
   setTimeout(() => {
       headerText.classList.add("display-opacity");
-  }, 800);
+  }, 1500);
+  setTimeout(() => {
+      headerButton.classList.add("display-opacity");
+  }, 3000);
 }
 
 // Event listeners
