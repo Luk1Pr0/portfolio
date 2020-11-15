@@ -99,7 +99,13 @@ function showHeader() {
   }, 1500);
   setTimeout(() => {
       headerButton.classList.add("display-opacity");
-  }, 3000);
+  }, 2500);
+  // If screen size is below 1000px run the below function
+  if (window.innerWidth <= 1000) {
+        setTimeout(() => {
+           navButton.classList.add("display-burger");
+        }, 3000);
+  }
 }
 
 // Event listeners
