@@ -635,6 +635,15 @@ footer a {
         width: 100%;
         height: 30vh;
         margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .project-image-container img {
+        width: auto;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
     }
 
     .project-text-container {
