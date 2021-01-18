@@ -23,37 +23,37 @@ const displayProjectText = () => {
         // Position of scroll divided
         let viewHeight = window.innerHeight / 1.5;
         if (rectTop <= viewHeight) {
-          text.classList.add("display-project-text");
+            text.classList.add("display-project-text");
         } else {
-          text.classList.remove("display-project-text");
+            text.classList.remove("display-project-text");
         }
     })
-  }
+}
 
 // Slide in project image on scroll
 const displayProjectImage = () => {
-  projectImage.forEach(image => {
-      // Position of project text from top
-      let imgTop = image.getBoundingClientRect().top;
-      // Position of scroll divided
-      let viewHeight = window.innerHeight / 1.5;
-      if (imgTop <= viewHeight) {
-        image.classList.add("display-project-image");
-      } else {
-        image.classList.remove("display-project-image");
-      }
-  })
+    projectImage.forEach((image) => {
+        // Position of project text from top
+        let imgTop = image.getBoundingClientRect().top;
+        // Position of scroll divided
+        let viewHeight = window.innerHeight / 1.5;
+        if (imgTop <= viewHeight) {
+            image.classList.add("display-project-image");
+        } else {
+            image.classList.remove("display-project-image");
+        }
+    })
 }
 
 // Run the display project function when project section in view
 const inView = () => {
-  let windowHeight = window.innerHeight;
-  let height = projectSection.getBoundingClientRect().top - windowHeight;
-  let bottom = projectSection.getBoundingClientRect().bottom - windowHeight;
-  if (height < 0 && bottom > 0) {
-    displayProjectText();
-    displayProjectImage();
-  }
+    let windowHeight = window.innerHeight;
+    let height = projectSection.getBoundingClientRect().top - windowHeight;
+    let bottom = projectSection.getBoundingClientRect().bottom - windowHeight;
+    if (height < 0 && bottom > 0) {
+        displayProjectText();
+        displayProjectImage();
+    }
 }
 
 // Scroll to about section
@@ -68,44 +68,77 @@ const toggleNav = () => {
     navButton.classList.toggle("active-bar");
 }
 
+// // Show or hide burger depending on scroll position
+// const showBurger = () => {
+//     // If screen widht is less than or equal to 1000 then run below code
+//     if (window.innerWidth <= 1000) {
+//         // Dynamic top position of the about section
+//         const sectionPos = aboutSection.getBoundingClientRect().top;
+//         // window.addEventListener('scroll', (e) => {
+//         // If scroll pos reaches or exceeds the position of the about section then remove the hidden class
+//         if (window.scrollY >= sectionPos) {
+//             navButton.classList.remove('hidden');
+//             console.log('more')
+//         } else {
+//             navButton.classList.add('hidden');
+//             console.log('less')
+//         }
+//         // });
+//     }
+// }
+
+// showBurger();
+
+
 const closeNav = () => {
     navMenu.classList.remove("nav-active");
     navButton.classList.remove("active-bar");
 }
 
 const displayNav = () => {
-  // Get position of about section and put it in a variable
-  let showNavPos = aboutSection.getBoundingClientRect().y;
+    // Dynamic top position of the about section
+    const sectionPos = aboutSection.getBoundingClientRect().top;
+    // Get position of about section and put it in a variable
+    let showNavPos = aboutSection.getBoundingClientRect().y;
     if (showNavPos <= 80) {
         navMenu.classList.add("nav-show");
     } else {
         navMenu.classList.remove("nav-show");
     }
+    // If screen width is less than or equal to 1000 then run below code
+    if (window.innerWidth <= 1000) {
+        // If scroll pos reaches or exceeds the position of the about section then remove the hidden class
+        if (sectionPos <= 0) {
+            navButton.classList.remove('hidden');
+        } else {
+            navButton.classList.add('hidden');
+        }
+    }
 }
 
 // For each link, loop through and add the closeNav functionality
 const iterateLinks = () => {
-  navLinks.forEach(link => {
-      link.addEventListener("click", closeNav);
-  })
+    navLinks.forEach(link => {
+        link.addEventListener("click", closeNav);
+    })
 }
 
 function showHeader() {
-  setTimeout(() => {
-      header.classList.add("display-opacity");
-  }, 500);
-  setTimeout(() => {
-      headerText.classList.add("display-opacity");
-  }, 1500);
-  setTimeout(() => {
-      headerButton.classList.add("display-opacity");
-  }, 2500);
-  // If screen size is below 1000px run the below function
-  if (window.innerWidth <= 1000) {
-        setTimeout(() => {
-           navButton.classList.add("display-burger");
-        }, 3000);
-  }
+    setTimeout(() => {
+        header.classList.add("display-opacity");
+    }, 500);
+    setTimeout(() => {
+        headerText.classList.add("display-opacity");
+    }, 1500);
+    setTimeout(() => {
+        headerButton.classList.add("display-opacity");
+    }, 2500);
+    // // If screen size is below 1000px run the below function
+    // if (window.innerWidth <= 1000) {
+    //     setTimeout(() => {
+    //         navButton.classList.add("display-burger");
+    //     }, 3000);
+    // }
 }
 
 // Event listeners
@@ -119,7 +152,7 @@ iterateLinks();
 showHeader();
 
 // Contact form submission script
-window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("DOMContentLoaded", function () {
 
     // Success and Error functions for after the form is submitted
     function success() {
@@ -133,25 +166,25 @@ window.addEventListener("DOMContentLoaded", function() {
     }
 
     // handle the form submission event
-    contactForm.addEventListener("submit", function(ev) {
-      ev.preventDefault();
-      var data = new FormData(contactForm);
-      ajax(contactForm.method, contactForm.action, data, success, error);
+    contactForm.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        var data = new FormData(contactForm);
+        ajax(contactForm.method, contactForm.action, data, success, error);
     });
-  });
-  
-  // helper function for sending an AJAX request
-  function ajax(method, url, data, success, error) {
+});
+
+// helper function for sending an AJAX request
+function ajax(method, url, data, success, error) {
     var xhr = new XMLHttpRequest();
     xhr.open(method, url);
     xhr.setRequestHeader("Accept", "application/json");
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200) {
-        success(xhr.response, xhr.responseType);
-      } else {
-        error(xhr.status, xhr.response, xhr.responseType);
-      }
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+        if (xhr.status === 200) {
+            success(xhr.response, xhr.responseType);
+        } else {
+            error(xhr.status, xhr.response, xhr.responseType);
+        }
     };
     xhr.send(data);
-  }
+}
