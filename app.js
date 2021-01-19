@@ -5,6 +5,7 @@ const aboutSection = document.querySelector("#about");
 const projectSection = document.querySelector("#projects");
 const navMenu = document.querySelector("#nav-menu");
 const navLinks = document.querySelectorAll("nav ul li");
+const pageLinks = document.querySelectorAll("nav ul li a");
 const contactFormContainer = document.querySelector("#form-container");
 const contactForm = document.querySelector("#contact-form");
 const submitFormBtn = document.querySelector("#send-button");
@@ -13,7 +14,7 @@ const projectImage = document.querySelectorAll(".project-image-container");
 const header = document.querySelector("header");
 const headerText = document.querySelector(".header-text");
 const headerButton = document.querySelector(".button-container");
-
+const darkOverlay = document.querySelector('.switch-overlay');
 
 // Slide in project text on scroll
 const displayProjectText = () => {
@@ -68,36 +69,33 @@ const toggleNav = () => {
     navButton.classList.toggle("active-bar");
 }
 
-// // Show or hide burger depending on scroll position
-// const showBurger = () => {
-//     // If screen widht is less than or equal to 1000 then run below code
-//     if (window.innerWidth <= 1000) {
-//         // Dynamic top position of the about section
-//         const sectionPos = aboutSection.getBoundingClientRect().top;
-//         // window.addEventListener('scroll', (e) => {
-//         // If scroll pos reaches or exceeds the position of the about section then remove the hidden class
-//         if (window.scrollY >= sectionPos) {
-//             navButton.classList.remove('hidden');
-//             console.log('more')
-//         } else {
-//             navButton.classList.add('hidden');
-//             console.log('less')
-//         }
-//         // });
-//     }
-// }
-
-// showBurger();
-
-
 const closeNav = () => {
     navMenu.classList.remove("nav-active");
     navButton.classList.remove("active-bar");
 }
 
+// Display dark overlay and hide it after user clicks on link
+const displayOverlay = () => {
+    // For each link add an event listener
+    pageLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault()
+            setTimeout(() => {
+                // Get the href name of the selected a tag
+                const pageLocation = e.srcElement.attributes.href.value;
+                // Scroll to the selected positon
+                location.href = pageLocation;
+            }, 800);
+            darkOverlay.classList.remove('hidden');
+            // Add the hidden class back
+            setTimeout(() => darkOverlay.classList.add('hidden'), 800);
+        });
+    });
+}
+
 const displayNav = () => {
     // Dynamic top position of the about section
-    const sectionPos = aboutSection.getBoundingClientRect().top;
+    const sectionPos = aboutSection.getBoundingClientRect().top - 50;
     // Get position of about section and put it in a variable
     let showNavPos = aboutSection.getBoundingClientRect().y;
     if (showNavPos <= 80) {
@@ -109,9 +107,9 @@ const displayNav = () => {
     if (window.innerWidth <= 1000) {
         // If scroll pos reaches or exceeds the position of the about section then remove the hidden class
         if (sectionPos <= 0) {
-            navButton.classList.remove('hidden');
+            navButton.classList.remove('hidden-button');
         } else {
-            navButton.classList.add('hidden');
+            navButton.classList.add('hidden-button');
         }
     }
 }
@@ -123,6 +121,7 @@ const iterateLinks = () => {
     })
 }
 
+// Show header after certain time
 function showHeader() {
     setTimeout(() => {
         header.classList.add("display-opacity");
@@ -133,12 +132,6 @@ function showHeader() {
     setTimeout(() => {
         headerButton.classList.add("display-opacity");
     }, 2500);
-    // // If screen size is below 1000px run the below function
-    // if (window.innerWidth <= 1000) {
-    //     setTimeout(() => {
-    //         navButton.classList.add("display-burger");
-    //     }, 3000);
-    // }
 }
 
 // Event listeners
@@ -150,6 +143,7 @@ window.addEventListener("scroll", inView);
 // Invoke function
 iterateLinks();
 showHeader();
+displayOverlay();
 
 // Contact form submission script
 window.addEventListener("DOMContentLoaded", function () {
