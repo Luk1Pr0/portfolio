@@ -80,17 +80,24 @@ const displayOverlay = () => {
     pageLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault()
-            setTimeout(() => {
-                // Get the href name of the selected a tag
-                const pageLocation = e.srcElement.attributes.href.value;
-                // Scroll to the selected positon
-                location.href = pageLocation;
-            }, 800);
             darkOverlay.classList.remove('hidden');
-            // Add the hidden class back
-            setTimeout(() => darkOverlay.classList.add('hidden'), 800);
+            setTimeout(() => scrollToPage(e), 800);
+            setTimeout(hideOverlay, 800);
         });
     });
+}
+
+// Add the hidden class back
+const hideOverlay = () => {
+    darkOverlay.classList.add('hidden');
+}
+
+// Scroll to the page section
+const scrollToPage = (e) => {
+    // Get the href name of the selected a tag
+    const pageLocation = e.srcElement.attributes.href.value;
+    // Scroll to the selected positon
+    location.href = pageLocation;
 }
 
 const displayNav = () => {
