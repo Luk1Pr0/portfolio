@@ -8,7 +8,10 @@ const navLinks = document.querySelectorAll("nav ul li");
 const pageLinks = document.querySelectorAll("nav ul li a");
 const contactFormContainer = document.querySelector("#form-container");
 const contactForm = document.querySelector("#contact-form");
+const formInputs = document.querySelectorAll('input');
 const submitFormBtn = document.querySelector("#send-button");
+const alertContainer = document.querySelector('#alert-container');
+const alertContainerText = document.querySelector('#alert-text');
 const projectText = document.querySelectorAll(".project-text-container");
 const projectImage = document.querySelectorAll(".project-image-container");
 const header = document.querySelector("header");
@@ -59,8 +62,12 @@ const inView = () => {
 
 // Scroll to about section
 const scrollToAbout = () => {
-    // Scroll to the about section
-    aboutSection.scrollIntoView(true);
+    const sectionPos = aboutSection.getBoundingClientRect().top;
+    // Scroll smooth when the find out more button is clicked
+    window.scroll({
+        top: sectionPos,
+        behavior: 'smooth'
+    });
 }
 
 const toggleNav = () => {
@@ -129,7 +136,7 @@ const iterateLinks = () => {
 }
 
 // Show header after certain time
-function showHeader() {
+const showHeader = () => {
     setTimeout(() => {
         header.classList.add("display-opacity");
     }, 500);
@@ -141,13 +148,41 @@ function showHeader() {
     }, 2500);
 }
 
+// Alert user if the form has been submitted succesfully or if it has failed
+const alertUser = (hasSubmitted) => {
+    // Hide the form container
+    contactFormContainer.setAttribute('hidden', 'true');
+    if (hasSubmitted === 'success') {
+        alertContainerText.textContent = 'Your message has been sent. I will be in touch soon';
+        alertContainerText.style.border = '2px solid rgba(0, 220, 0)';
+        alertContainerText.style.padding = '10px 15px';
+        alertContainerText.style.color = 'rgba(0, 220, 0)';
+        setTimeout(hideAlert, 3000);
+    } else {
+        alertContainerText.textContent = 'Could not send your message. Please try again';
+        alertContainerText.style.border = '2px solid crimson';
+        alertContainerText.style.padding = '10px 15px';
+        alertContainerText.style.color = 'crimson';
+        setTimeout(hideAlert, 3000);
+    }
+    // Display the alert container
+    alertContainer.removeAttribute('hidden');
+}
+
+// Hide the user alert and display the contact form again
+const hideAlert = () => {
+    alertContainer.setAttribute('hidden', 'true');
+    alertContainerText.text = '';
+    contactFormContainer.removeAttribute('hidden');
+}
+
 // Event listeners
 scrollButton.addEventListener("click", scrollToAbout);
 navButton.addEventListener("click", toggleNav);
 window.addEventListener("scroll", displayNav);
 window.addEventListener("scroll", inView);
 
-// Invoke function
+// Invoke function on load
 iterateLinks();
 showHeader();
 displayOverlay();
@@ -158,18 +193,17 @@ window.addEventListener("DOMContentLoaded", function () {
     // Success and Error functions for after the form is submitted
     function success() {
         contactForm.reset();
-        alert("Thank you for submitting the form :)");
+        alertUser('success');
     }
 
     function error() {
-        console.log("Error");
-        alert("Sorry, something went wrong")
+        alertUser('failed')
     }
 
-    // handle the form submission event
-    contactForm.addEventListener("submit", function (ev) {
+    // Handle the form submission event
+    contactForm.addEventListener("submit", (ev) => {
         ev.preventDefault();
-        var data = new FormData(contactForm);
+        let data = new FormData(contactForm);
         ajax(contactForm.method, contactForm.action, data, success, error);
     });
 });
